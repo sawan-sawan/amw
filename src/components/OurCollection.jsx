@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Smartphone, Check, Star } from 'lucide-react';
 import './OurCollection.css';
+import { useScrollToTop } from "../hooks/useScrollToTop";
+
 
 const OurCollection = () => {
+  useScrollToTop();
   const [activeTab, setActiveTab] = useState('All Phones');
 
   const products = [

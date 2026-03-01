@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Link import kiya gaya hai
 import './Navbar.css';
 import logo from '../assets/logoblack.png'; 
 
@@ -18,50 +19,53 @@ const Navbar = () => {
         
         {/* Logo Section */}
         <div className="logo-section">
-          <img src={logo} alt="AMW Logo" className="nav-logo" />
+          {/* Logo par click karne se bhi home page par jayega */}
+          <Link to="/">
+            <img src={logo} alt="AMW Logo" className="nav-logo" />
+          </Link>
         </div>
 
         {/* Menu Links */}
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
           <li>
-            <a href="#home" onClick={() => setIsOpen(false)}>
+            <Link to="/" onClick={() => setIsOpen(false)}>
               <span className="nav-icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
               </span>
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#new" onClick={() => setIsOpen(false)}>
+            <Link to="/featured-products" onClick={() => setIsOpen(false)}>
               <span className="nav-icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
               </span>
               New Phones
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#used" onClick={() => setIsOpen(false)}>
+            <Link to="/our-collection" onClick={() => setIsOpen(false)}>
               <span className="nav-icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
               </span>
               Used Phones
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#about" onClick={() => setIsOpen(false)}>
+            <Link to="/about" onClick={() => setIsOpen(false)}>
               <span className="nav-icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
               </span>
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#contact" onClick={() => setIsOpen(false)}>
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
               <span className="nav-icon">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               </span>
               Contact
-            </a>
+            </Link>
           </li>
           
           {/* Mobile Only Call Button */}

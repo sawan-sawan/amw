@@ -1,8 +1,10 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import './ContactSection.css'; 
+import { useScrollToTop } from "../hooks/useScrollToTop";
 
 const ContactSection = () => {
+  useScrollToTop();
   return (
     <section className="contact-section">
       <div className="contact-container">

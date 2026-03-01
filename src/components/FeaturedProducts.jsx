@@ -1,8 +1,11 @@
 import React from 'react';
 import { Smartphone, Check, Star } from 'lucide-react';
 import './FeaturedProducts.css';
+import { useScrollToTop } from "../hooks/useScrollToTop";
+
 
 const FeaturedProducts = () => {
+  useScrollToTop();
   const products = [
     {
       id: 1,

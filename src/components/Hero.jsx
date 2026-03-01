@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Hero.css';
+import { useScrollToTop } from "../hooks/useScrollToTop";
+
 
 const Hero = () => {
+  useScrollToTop();
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   );

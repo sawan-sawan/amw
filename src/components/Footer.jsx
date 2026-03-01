@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Link import kiya gaya hai
 import { Heart, ChevronRight, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import './Footer.css';
 // UPDATE THIS PATH to wherever you save your logo file
@@ -12,8 +13,9 @@ const Footer = () => {
         {/* Column 1: Brand Info */}
         <div className="footer-brand">
           <div className="footer-logo-wrap">
-            {/* Replaced the icon with your custom logo */}
-            <img src={logo} alt="Arora Mobile World Logo" className="footer-custom-logo" />
+            <Link to="/">
+              <img src={logo} alt="Arora Mobile World Logo" className="footer-custom-logo" />
+            </Link>
             <h3 className="footer-brand-name">Arora Mobile World</h3>
           </div>
           <p className="footer-desc">
@@ -30,29 +32,29 @@ const Footer = () => {
           <h4 className="footer-title">Quick Links</h4>
           <ul className="footer-links">
             <li>
-              <a href="#home" className="footer-link-item">
+              <Link to="/" className="footer-link-item">
                 <ChevronRight size={16} /> Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#new-phones" className="footer-link-item">
+              <Link to="/featured-products" className="footer-link-item">
                 <ChevronRight size={16} /> New Phones
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#used-phones" className="footer-link-item">
+              <Link to="/our-collection" className="footer-link-item">
                 <ChevronRight size={16} /> Used Phones
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about" className="footer-link-item">
+              <Link to="/about" className="footer-link-item">
                 <ChevronRight size={16} /> About Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="footer-link-item">
+              <Link to="/contact" className="footer-link-item">
                 <ChevronRight size={16} /> Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

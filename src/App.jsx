@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom' 
 import './App.css'
-// Navbar को import करें (ध्यान दें कि पाथ सही हो)
+
 import Navbar from '../src/components/Navbar' 
 import Hero from '../src/components/Hero'
 import FeaturesSection from '../src/components/FeaturesSection'
@@ -12,23 +13,38 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <>
-      {/* हमने यहाँ Navbar को रेंडर किया है */}
+    <BrowserRouter>
       <Navbar />
-      <Hero />
-      <FeaturesSection />
-      <FeaturedProducts />
-      <OurCollection />
-      <AboutSection />
-      <ContactSection />
+
+      {/* Yahan se maine <main style={{ marginTop: '120px' }}> hata diya hai */}
+      <Routes>
+        {/* --- 1. होमपेज रूट --- */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <FeaturesSection />
+              <OurCollection />
+              <AboutSection />
+              <FeaturedProducts />
+              <ContactSection />
+            </>
+          }
+        />
+
+        {/* --- 2. बाकी सभी पेज --- */}
+        <Route path="/home" element={<Hero />} />
+        <Route path="/featured-section" element={<FeaturesSection />} />
+        <Route path="/featured-products" element={<FeaturedProducts />} />
+        <Route path="/our-collection" element={<OurCollection />} />
+        <Route path="/about" element={<AboutSection />} />
+        <Route path="/contact" element={<ContactSection />} />
+      </Routes>
+
       <Footer />
-      
-      {/* यहाँ आप आगे का कंटेंट (Hero, Products, etc.) डाल सकते हैं */}
-      <main style={{ marginTop: '120px' }}> 
-        {/* marginTop इसलिए दिया है ताकि कंटेंट Navbar के पीछे न छुप जाए */}
-      </main>
-    </>
+    </BrowserRouter>
   )
 }
 
-export default App
+export default App  

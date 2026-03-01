@@ -1,8 +1,11 @@
 import React from 'react';
 import './FeaturesSection.css';
 import { Package, ShieldCheck, Tag, Award } from 'lucide-react';
+import { useScrollToTop } from "../hooks/useScrollToTop";
+
 
 const FeaturesSection = () => {
+  useScrollToTop();
   const features = [
     {
       id: 1,
