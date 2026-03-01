@@ -1,0 +1,274 @@
+/* Section & Background */
+.featured-section {
+  background-color: #f4f7fa; /* Subtle off-white/blueish background */
+  padding: 80px 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Header Styling */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.subtitle {
+  color: #2563eb;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  color: #0f172a;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.description {
+  color: #64748b;
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grid/Container Setup */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 🌟 Modern Product Card with Hover Animation */
+.product-card {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 380px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy modern hover */
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Card Top (Image & Colors) */
+.card-top {
+  position: relative;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+.bg-samsung {
+  background: linear-gradient(135deg, #3b82f6, #4f46e5); /* Vibrant Blue */
+}
+
+.bg-apple {
+  background: linear-gradient(135deg, #64748b, #475569); /* Slate/Dark Gray */
+}
+
+/* Icon Animation on Hover */
+.product-icon-wrapper {
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-icon-wrapper {
+  transform: scale(1.15) rotate(-5deg); /* Slight pop & tilt on hover */
+}
+
+.product-icon {
+  opacity: 0.9;
+}
+
+/* Badges */
+.top-badges {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand-badge {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.condition-badge {
+  background: #fef08a; /* Yellow */
+  color: #854d0e;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.featured-badge {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: #fbbf24;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Card Bottom Content */
+.card-bottom {
+  padding: 24px;
+}
+
+.product-name {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.product-desc {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+  min-height: 40px; /* Keeps card heights equal */
+}
+
+.stock-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #10b981; /* Emerald Green */
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+}
+
+.product-price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Button with Hover Fill Effect */
+.enquire-btn {
+  background: #0f172a; /* Dark Navy */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.enquire-btn:hover {
+  background: #2563eb; /* Changes to bright blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* Tablet View */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+/* 🛠️ MOBILE VIEW: UPDATED FOR 2-COLUMN GRID */
+@media (max-width: 600px) {
+  .featured-section {
+    padding: 50px 10px; /* Padding adjust ki gayi hai */
+  }
+
+  .products-container {
+    display: grid; /* Mobile par flex ko grid mein badal diya */
+    grid-template-columns: repeat(2, 1fr); /* 2 Cards ek saath */
+    gap: 12px; /* Cards ke beech ka gap kam kiya */
+  }
+
+  .product-card {
+    max-width: 100%; /* Card grid cell ko poora cover karega */
+  }
+
+  /* 🛠️ Compact Card Styling (Same as Our Collection) */
+  .card-top {
+    height: 140px !important; 
+  }
+
+  .product-icon-wrapper svg {
+    width: 40px !important; 
+    height: 40px !important;
+  }
+
+  .card-bottom {
+    padding: 12px !important; 
+  }
+
+  .product-name {
+    font-size: 1rem !important; 
+    margin-bottom: 4px !important;
+  }
+
+  .product-desc {
+    font-size: 0.75rem !important; 
+    margin-bottom: 10px !important;
+    min-height: auto !important; 
+  }
+
+  .stock-status {
+    font-size: 0.75rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .product-price {
+    font-size: 1rem !important;
+  }
+
+  .enquire-btn {
+    padding: 6px 12px !important;
+    font-size: 0.10rem !important;
+  }
+
+  /* Badges ko chhota kiya */
+  .brand-badge, .condition-badge, .featured-badge {
+    font-size: 0.65rem !important;
+    padding: 3px 8px !important;
+  }
+}

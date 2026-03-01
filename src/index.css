@@ -1,0 +1,12 @@
+/* Apple Style Font Family */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased; /* टेक्स्ट को स्मूथ और पतला दिखाने के लिए */
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fbfbfb; /* Apple जैसा हल्का ऑफ-व्हाइट बैकग्राउंड */
+}

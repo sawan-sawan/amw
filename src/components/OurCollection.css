@@ -1,0 +1,151 @@
+/* Section Background */
+.collection-section {
+  background-color: #f4f7fa; 
+  padding: 80px 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Tabs Styling */
+.filter-tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.filter-tabs {
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 30px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: #0f172a;
+}
+
+.tab-btn.active {
+  background: #0f172a; /* Dark Navy active state */
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.2);
+}
+
+/* Grid Layout for 4 Columns */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Brand Background Gradients */
+.bg-vivo { background: linear-gradient(135deg, #a855f7, #9333ea); }       /* Purple */
+.bg-realme { background: linear-gradient(135deg, #facc15, #eab308); }     /* Yellow/Orange */
+.bg-redmi { background: linear-gradient(135deg, #3b82f6, #2563eb); }      /* Blue */
+.bg-oppo { background: linear-gradient(135deg, #14b8a6, #0d9488); }       /* Teal */
+.bg-oneplus { background: linear-gradient(135deg, #ef4444, #dc2626); }    /* Red */
+.bg-samsung { background: linear-gradient(135deg, #4f46e5, #4338ca); }    /* Indigo */
+.bg-apple { background: linear-gradient(135deg, #64748b, #475569); }      /* Slate */
+
+/* Fade-in Animation for Filters */
+.fade-in {
+  animation: fadeInScale 0.4s ease forwards;
+}
+
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS 
+   ========================================= */
+
+@media (max-width: 1200px) {
+  .collection-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filter-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* 🛠️ MOBILE VIEW: UPDATED FOR 2x2 GRID */
+@media (max-width: 600px) {
+  .collection-section {
+    padding: 50px 10px; /* Mobile par padding thodi kam ki */
+  }
+
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr); /* 🛠️ 1 ki jagah ab 2 cards dikhenge */
+    gap: 12px; /* Gap kam kiya taaki fit aa jaye */
+  }
+
+  /* 🛠️ Mobile par Cards ko thoda compact banaya taaki ajeeb na lage */
+  .card-top {
+    height: 140px !important; 
+  }
+
+  .product-icon-wrapper svg {
+    width: 40px !important; /* Icon thoda chota kiya */
+    height: 40px !important;
+  }
+
+  .card-bottom {
+    padding: 12px !important; /* Andar ka spacing kam kiya */
+  }
+
+  .product-name {
+    font-size: 1rem !important; /* Font chota kiya */
+    margin-bottom: 4px !important;
+  }
+
+  .product-desc {
+    font-size: 0.75rem !important; 
+    margin-bottom: 10px !important;
+    min-height: auto !important; /* Height fix hatayi */
+  }
+
+  .stock-status {
+    font-size: 0.75rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .product-price {
+    font-size: 0.80rem !important;
+  }
+
+  .enquire-btn {
+    padding: 6px 12px !important;
+    font-size: 9px !important;
+  }
+
+  /* Top badges in mobile view */
+  .brand-badge, .condition-badge, .featured-badge {
+    font-size: 0.65rem !important;
+    padding: 3px 8px !important;
+  }
+}

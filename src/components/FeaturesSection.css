@@ -1,0 +1,124 @@
+/* Base Section Styling */
+.modern-features-section {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 3rem 1rem; /* Mobile par padding thodi kam ki hai */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; 
+}
+
+/* Highly Responsive Grid Wrapper */
+.features-wrapper {
+  display: grid;
+  /* 🛠️ FIX: Mobile Default ab 2 Column (2x2) hoga */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 1.5rem; /* Mobile par 2 column ke hisaab se gap kam kiya hai */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual Feature Card */
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start; /* Items ko upar se align rakhega */
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+/* Hover lift effect for modern feel */
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Modern Icon Container with Subtle Glow */
+.icon-container {
+  /* 🛠️ FIX: Mobile par icon thoda chota rakha hai taaki fit aa jaye */
+  width: 50px; 
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03); 
+  border: 1px solid rgba(255, 255, 255, 0.08); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  transition: all 0.4s ease;
+}
+
+.icon-container svg {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-card:hover .icon-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); 
+}
+
+/* Typography Enhancements */
+.feature-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  /* 🛠️ FIX: Mobile par font size chota kiya hai */
+  font-size: 1.2rem; 
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.feature-subtitle {
+  font-family: system-ui, -apple-system, sans-serif;
+  /* 🛠️ FIX: Mobile par subtitle font bhi adjust kiya hai */
+  font-size: 0.8rem; 
+  font-weight: 400;
+  color: #a1a1aa; 
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+
+/* Small Tablets (e.g., iPads portrait) */
+@media (min-width: 640px) {
+  .features-wrapper {
+    grid-template-columns: repeat(2, 1fr); /* Tablet pe bhi 2 Columns */
+    gap: 3rem; /* Tablet par space wapis normal kardi */
+  }
+  .icon-container {
+    width: 64px;
+    height: 64px;
+  }
+  .icon-container svg {
+    width: 28px;
+    height: 28px;
+  }
+  .feature-title {
+    font-size: 1.75rem;
+  }
+  .feature-subtitle {
+    font-size: 0.95rem;
+  }
+}
+
+/* Desktops & Laptops */
+@media (min-width: 1024px) {
+  .features-wrapper {
+    grid-template-columns: repeat(4, 1fr); /* 4 Columns in one line */
+    gap: 2rem;
+  }
+  .modern-features-section {
+    padding: 5rem 2rem;
+  }
+}

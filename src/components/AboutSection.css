@@ -1,0 +1,145 @@
+/* AboutSection.css */
+.about-section {
+  background-color: #f8fafc;
+  padding: 4rem 1rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+@media (min-width: 768px) {
+  .about-section {
+    padding: 4rem 2rem;
+  }
+}
+
+.about-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .about-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- Left Column Typography & Button --- */
+.about-subtitle {
+  color: #2563eb;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.about-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .about-title {
+    font-size: 3rem;
+  }
+}
+
+.about-description {
+  color: #4b5563;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.text-black-bold {
+  font-weight: 700;
+  color: #000000;
+}
+
+.btn-black {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.btn-black:hover {
+  background-color: #1f2937; /* Slightly lighter black/dark gray on hover */
+}
+
+.btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.btn-black:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+/* --- Right Column (Cards Grid) --- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* 2x2 Grid for tablets and up */
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.about-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon-wrapper {
+  background-color: #000000;
+  color: #ffffff;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.card-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}

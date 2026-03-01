@@ -1,0 +1,215 @@
+/* Modern Navbar Styling */
+.navbar-container {
+  position: fixed;
+  top: 15px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1300px;
+  background: rgb(255, 255, 255); 
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px; 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px 25px;
+  transition: all 0.3s ease;
+    
+  /* GLASSMORPHISM MAGIC YAHAN HAI 👇 */
+  background: rgba(255, 255, 255, 0.65); /* 0.65 opacity se peeche ka content dikhega */
+  backdrop-filter: blur(16px);           /* Peeche ke content ko blur karega */
+  -webkit-backdrop-filter: blur(16px);   /* Apple/Safari browsers ke support ke liye */
+}
+
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Setup */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  height: 45px; 
+  width: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0; 
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* DESKTOP पर आइकॉन्स हाईड कर दिए */
+.nav-icon {
+  display: none; 
+}
+
+/* Hover Animation Line */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #0d0d0e;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #0d0d0e;
+}
+
+/* Call Button (Desktop) - Black & White */
+.call-btn {
+  background: #111111;
+  color: white;
+  border: 1px solid #111111;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.call-btn:hover {
+  background: #ffffff;
+  color: #111111;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #111111;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.mobile-only { display: none; }
+
+/* =========================================
+   Mobile View Styles
+   ========================================= */
+@media (max-width: 992px) {
+  .navbar-container {
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+    border: none; 
+    border-bottom: 1px solid #eeeeee; 
+    padding: 10px 25px; 
+    box-sizing: border-box; 
+  }
+
+  /* ड्रॉपडाउन मेनू */
+  .nav-links {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98); 
+    flex-direction: column;
+    align-items: flex-start; 
+    padding: 15px 30px 25px 30px; 
+    border-radius: 0 0 20px 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: none;
+    gap: 15px; 
+    box-sizing: border-box;
+    margin-top: -1px; 
+  }
+
+  .nav-links.open {
+    display: flex;
+    animation: slideIn 0.3s ease forwards;
+  }
+  
+  .nav-links li {
+    width: 100%;
+  }
+
+  /* MOBILE में आइकॉन्स शो कर दिए */
+  .nav-icon {
+    display: flex; 
+    align-items: center;
+    margin-right: 12px;
+    color: #111111; 
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 8px 0;
+    color: #111111;
+  }
+
+  .hamburger { display: flex; }
+  .call-btn { display: none; }
+  .mobile-only { display: block; width: 100%; margin-top: 10px; }
+  
+  /* Mobile Button - Black & White With Icon Centered */
+  .call-btn-mobile {
+    width: 100%;
+    padding: 14px;
+    background: #111111; 
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;        /* टेक्स्ट और आइकॉन को अलाइन करने के लिए */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .top-bar { transform: rotate(45deg) translate(5px, 6px); }
+  .mid-bar { opacity: 0; }
+  .bot-bar { transform: rotate(-45deg) translate(5px, -6px); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

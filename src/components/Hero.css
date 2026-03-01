@@ -1,0 +1,219 @@
+/* Container Setup */
+.hero-container {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; 
+  position: relative;
+  color: white;
+  padding: 120px 5% 60px 5%; /* Top padding navbar ke liye */
+  box-sizing: border-box;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  gap: 50px;
+  z-index: 2;
+}
+
+/* Text Section Styling */
+.hero-text-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  margin-bottom: 20px;
+  width: fit-content; 
+}
+
+.hero-text-section h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero-text-section h1 span {
+  color: #3b82f6;
+}
+
+.hero-text-section p {
+  color: #a1a1aa;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.6;
+  margin-bottom: 35px;
+  max-width: 500px;
+}
+
+/* Buttons */
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-white {
+  background: white;
+  color: black;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: transform 0.2s ease;
+}
+
+.btn-white:hover, .btn-outline:hover {
+  transform: translateY(-3px);
+}
+
+/* Visual Section (The Boxes) */
+.hero-visual-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 500px; /* 🛠️ FIX: Explicit height taaki absolute boxes bahar na nikle */
+  width: 100%;
+}
+
+.box-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-box {
+  position: absolute;
+  width: 250px;
+  height: 440px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #111;
+  border: 2px solid rgba(255,255,255,0.8);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Fixed Padding & Overlap)
+   ========================================= */
+
+/* Tablets & Small Laptops */
+@media (max-width: 968px) {
+  .hero-container {
+    padding-top: 120px;
+    padding-bottom: 80px; /* 🛠️ FIX: Niche se space badhaya */
+    height: auto;
+    min-height: auto;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 80px; /* 🛠️ FIX: Text aur Video ke beech me 80px ka solid gap */
+  }
+
+  .hero-text-section {
+    align-items: center; 
+  }
+
+  .hero-text-section p {
+    margin: 0 auto 30px auto; 
+  }
+
+  .hero-btns {
+    justify-content: center;
+  }
+
+  /* Tablet Box Sizes */
+  .hero-visual-section { min-height: 400px; }
+  .box-wrapper { height: 380px; }
+  .video-box {
+    width: 200px;
+    height: 350px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  .hero-container {
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+
+  .hero-content {
+    gap: 60px; /* Text aur video ke beech perfect gap */
+  }
+
+  /* 🛠️ FIX: Mobile Box Sizes chote kiye taaki screen ke bahar na jaye */
+  .hero-visual-section { min-height: 300px; }
+  .box-wrapper { height: 280px; }
+  
+  .video-box {
+    width: 150px;
+    height: 260px;
+    border-radius: 16px;
+  }
+
+  .hero-text-section h1 {
+    font-size: 2.2rem; /* Heading thodi resize ki mobile ke liye */
+  }
+
+  .hero-btns {
+    flex-direction: column; 
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-white, .btn-outline {
+    width: 100%;
+    max-width: 300px; 
+  }
+}
