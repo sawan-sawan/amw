@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Hero.css';
+import { Link } from 'react-router-dom'; // Link import kiya gaya hai
+
 import { useScrollToTop } from "../hooks/useScrollToTop";
 
 const Hero = () => {
@@ -37,6 +39,7 @@ const Hero = () => {
           <p>Your Trusted Destination for New & Used Smartphones. Quality devices, unbeatable prices, and service you can trust.</p>
           <div className="hero-btns">
             {/* Modern Primary Button with Smartphone SVG */}
+            <Link to="/our-collection">
             <button className="btn-primary">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
@@ -44,8 +47,10 @@ const Hero = () => {
               </svg>
               Shop New Phones
             </button>
+            </Link>
 
             {/* Modern Secondary Button with Price Tag SVG */}
+            <Link to="/our-collection">
             <button className="btn-secondary">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
@@ -53,6 +58,7 @@ const Hero = () => {
               </svg>
               Shop Used Phones
             </button>
+            </Link>
           </div>
         </div>
 

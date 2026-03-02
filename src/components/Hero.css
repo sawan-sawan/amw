@@ -100,6 +100,10 @@
   flex-wrap: wrap;
   margin-top: 10px;
 }
+/* Removes underline from Link tags inside hero-btns */
+.hero-btns a {
+  text-decoration: none;
+}
 
 /* Base style for both buttons */
 .btn-primary, .btn-secondary {
