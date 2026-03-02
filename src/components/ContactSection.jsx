@@ -28,7 +28,7 @@ const ContactSection = () => {
             </div>
             <h3 className="contact-card-title">Visit Us</h3>
             <p className="contact-card-text">
-              123 Main Market, Sector 15{"\n"}City - 123456, India
+              Nakodar road near Hawkers, Phillaur{"\n"}City - 144410, India
             </p>
           </div>
 
@@ -39,7 +39,7 @@ const ContactSection = () => {
             </div>
             <h3 className="contact-card-title">Call Us</h3>
             <p className="contact-card-text">
-              +91 98765 43210{"\n"}+91 87654 32109
+              +91 97700-00582{"\n"}+91 96965-70007
             </p>
           </div>
 

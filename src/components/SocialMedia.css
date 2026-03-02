@@ -59,7 +59,7 @@
 .slider-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Hide anything outside the container */
+  overflow: hidden; 
   padding: 20px 0;
 }
 
@@ -68,7 +68,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100px; /* Thoda aur bada shadow diya smooth effect ke liye */
+  width: 100px;
   z-index: 10;
   pointer-events: none;
 }
@@ -86,26 +86,29 @@
 /* --- The Moving Track --- */
 .reels-track {
   display: flex;
-  width: max-content; /* Track width utni hogi jitne cards hain */
-  /* 40s mein ek chakkar pura hoga. Speed adjust karne ke liye is time ko change karein */
+  width: max-content; 
+  /* 40s loops in one cycle. Adjust time to change speed */
   animation: marquee 40s linear infinite; 
 }
 
-/* JAISE HI CURSOR AAYE, ANIMATION RUK JAYE */
+/* PAUSE ON HOVER */
 .reels-track:hover {
   animation-play-state: paused;
 }
 
-/* Individual Video Cards */
+/* Individual Video Cards (Now using Images) */
 .reel-card {
-  flex-shrink: 0; /* Cards ko chota hone se roke */
+  display: block; 
+  text-decoration: none; 
+  position: relative; 
+  flex-shrink: 0; 
   width: 260px;
   aspect-ratio: 9 / 16;
   background-color: #111;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid #333;
-  margin-right: 20px; /* Gap dene ke liye margin-right use kiya */
+  margin-right: 20px; 
   cursor: pointer;
   transition: border-color 0.3s ease;
 }
@@ -114,16 +117,18 @@
   border-color: #ffffff;
 }
 
-.reel-video {
+/* 🛠️ NEW: Styling for the Thumbnail Image */
+.reel-thumbnail {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.85;
+  /* Yeh ensured karta hai ki thumbnail crop hoke pure space ko cover kare bina stretch hue */
+  object-fit: cover; 
+  opacity: 0.85; /* Starting background pe halka dim */
   transition: opacity 0.3s ease;
 }
 
-.reel-card:hover .reel-video {
-  opacity: 1;
+.reel-card:hover .reel-thumbnail {
+  opacity: 1; /* Hover pe full bright */
 }
 
 /* Hover Overlay */
@@ -133,7 +138,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6); 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,8 +150,26 @@
   opacity: 1;
 }
 
-.reel-overlay span {
-  background-color: rgba(255, 255, 255, 0.9);
+/* Overlay Content Styling */
+.overlay-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 0 15px;
+}
+
+.reel-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.watch-btn {
+  background-color: rgba(255, 255, 255, 0.95);
   color: #000;
   padding: 8px 16px;
   border-radius: 20px;
@@ -160,7 +183,6 @@
     transform: translateX(0);
   }
   100% {
-    /* Exactly half distance slide hoga, phir 0 pe reset ho jayega without noticing */
     transform: translateX(-50%); 
   }
 }
@@ -172,7 +194,7 @@
   }
   .reel-card {
     width: 220px;
-    margin-right: 15px; /* Mobile par thoda kam gap */
+    margin-right: 15px;
   }
   .fade-left, .fade-right {
     width: 50px;

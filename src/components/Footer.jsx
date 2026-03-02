@@ -65,11 +65,11 @@ const Footer = () => {
           <div className="footer-contact-list">
             <div className="footer-contact-item">
               <MapPin size={18} className="footer-contact-icon" />
-              <span>123 Main Market, Sector 15, City - 123456</span>
+              <span>Nakodar road near Hawkers, Phillaur{"\n"}City - 144410, India</span>
             </div>
             <div className="footer-contact-item">
               <Phone size={18} className="footer-contact-icon" />
-              <span>+91 98765 43210</span>
+              <span>+91 97700-00582{"\n"}+91 96965-70007</span>
             </div>
             <div className="footer-contact-item">
               <Mail size={18} className="footer-contact-icon" />
@@ -77,7 +77,7 @@ const Footer = () => {
             </div>
             <div className="footer-contact-item">
               <Clock size={18} className="footer-contact-icon" />
-              <span>Mon–Sat: 10 AM – 8 PM</span>
+              <span>  Mon – Sat: 10:00 AM – 8:00 PM{"\n"}Sunday: 11:00 AM – 5:00 PM</span>
             </div>
           </div>
         </div>
@@ -87,9 +87,6 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="footer-bottom">
         <div>© 2026 Arora Mobile World. All rights reserved.</div>
-        <div className="footer-credit">
-          Built with <Heart size={14} fill="currentColor" color="#000" /> using caffeine.ai
-        </div>
       </div>
     </footer>
   );
