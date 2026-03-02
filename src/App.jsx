@@ -10,6 +10,7 @@ import OurCollection from './components/OurCollection'
 import AboutSection from './components/AboutSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
+import SocialMedia from './components/SocialMedia'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Hero />
               <FeaturesSection />
               <OurCollection />
+              <SocialMedia />
               <AboutSection />
               <FeaturedProducts />
               <ContactSection />

@@ -1,117 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Smartphone, Check, Star } from 'lucide-react';
 import './OurCollection.css';
 import { useScrollToTop } from "../hooks/useScrollToTop";
 
+// Data file ko import karein (path apne hisaab se adjust kar lein)
+import { productsData } from "../data/products"; 
 
 const OurCollection = () => {
   useScrollToTop();
   const [activeTab, setActiveTab] = useState('All Phones');
+  
+  // Shuffled products aur pagination ke liye states
+  const [shuffledProducts, setShuffledProducts] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(8); // Start mein 8 phones dikhenge
 
-  const products = [
-    {
-      id: 1,
-      brand: "Vivo",
-      condition: "Used",
-      isFeatured: false,
-      name: "Used Vivo V21",
-      description: "Gently used phone with 44MP selfie camera",
-      inStock: true,
-      price: "₹12,999",
-      bgClass: "bg-vivo",
-      category: "Used Phones"
-    },
-    {
-      id: 2,
-      brand: "Realme",
-      condition: "Used",
-      isFeatured: false,
-      name: "Realme Narzo 30",
-      description: "Budget phone with gaming processor",
-      inStock: true,
-      price: "₹12,999",
-      bgClass: "bg-realme",
-      category: "Used Phones"
-    },
-    {
-      id: 3,
-      brand: "Redmi",
-      condition: "Used",
-      isFeatured: false,
-      name: "Redmi Note 10 Pro",
-      description: "Affordable phone with AMOLED screen",
-      inStock: true,
-      price: "₹18,999",
-      bgClass: "bg-redmi",
-      category: "Used Phones"
-    },
-    {
-      id: 4,
-      brand: "Apple",
-      condition: "Used",
-      isFeatured: false,
-      name: "Used iPhone XR",
-      description: "Well maintained iPhone XR",
-      inStock: true,
-      price: "₹25,999",
-      bgClass: "bg-apple",
-      category: "Used Phones"
-    },
-    {
-      id: 5,
-      brand: "Oppo",
-      condition: "Used",
-      isFeatured: false,
-      name: "Oppo Reno6",
-      description: "Sleek phone with AI portrait video features",
-      inStock: true,
-      price: "₹29,999",
-      bgClass: "bg-oppo",
-      category: "Used Phones"
-    },
-    {
-      id: 6,
-      brand: "OnePlus",
-      condition: "Used",
-      isFeatured: false,
-      name: "OnePlus 9R",
-      description: "High performance phone with Oxygen OS",
-      inStock: true,
-      price: "₹39,999",
-      bgClass: "bg-oneplus",
-      category: "Used Phones"
-    },
-    {
-      id: 7,
-      brand: "Samsung",
-      condition: "Used",
-      isFeatured: true,
-      name: "Samsung Galaxy S21 Ultra",
-      description: "Flagship Samsung smartphone with top-end features",
-      inStock: true,
-      price: "₹74,999",
-      bgClass: "bg-samsung",
-      category: "Used Phones" // Ise aap 'New Phones' bhi kar sakte hain test karne ke liye
-    },
-    {
-      id: 8,
-      brand: "Apple",
-      condition: "Used",
-      isFeatured: true,
-      name: "iPhone 13 Pro Max",
-      description: "Apple's latest Pro model with advanced camera system",
-      inStock: true,
-      price: "₹1,19,900",
-      bgClass: "bg-apple",
-      category: "Used Phones"
-    }
-  ];
+  // JAB PAGE LOAD HO: Products ko randomly shuffle karein
+  useEffect(() => {
+    const shuffleArray = [...productsData].sort(() => 0.5 - Math.random());
+    setShuffledProducts(shuffleArray);
+  }, []); // Empty dependency array means yeh sirf page refresh par chalega
+
+  // JAB TAB CHANGE HO: Visible count ko wapas reset kar dein
+  useEffect(() => {
+    setVisibleCount(8);
+  }, [activeTab]);
 
   // Filter Logic
-  const filteredProducts = products.filter(product => {
+  const filteredProducts = shuffledProducts.filter(product => {
     if (activeTab === 'All Phones') return true;
     return product.category === activeTab;
   });
+
+  // Jitne visible count hain, sirf utne hi products dikhayein
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
+
+  // Load More Function
+  const handleLoadMore = () => {
+    setVisibleCount(prevCount => prevCount + 4); // Ek click par 4 naye phones aayenge
+  };
 
   return (
     <section className="collection-section">
@@ -138,7 +64,7 @@ const OurCollection = () => {
 
       {/* Product Grid */}
       <div className="collection-grid">
-        {filteredProducts.map((product) => (
+        {visibleProducts.map((product) => (
           <div key={product.id} className="product-card fade-in">
             {/* Top Image Area */}
             <div className={`card-top ${product.bgClass}`}>
@@ -175,6 +101,15 @@ const OurCollection = () => {
           </div>
         ))}
       </div>
+
+      {/* Load More Button - Sirf tabhi dikhega jab aur products bache hon */}
+      {visibleCount < filteredProducts.length && (
+        <div className="load-more-container">
+          <button className="load-more-btn" onClick={handleLoadMore}>
+            Load More Products
+          </button>
+        </div>
+      )}
     </section>
   );
 };

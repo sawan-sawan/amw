@@ -1,108 +1,76 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Hero.css';
 import { useScrollToTop } from "../hooks/useScrollToTop";
 
-
 const Hero = () => {
   useScrollToTop();
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1200
-  );
-  
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // 4 Photos ka array
+  const images = [
+    { id: 1, src: "/image.png", alt: "Smartphone 0" },
+    { id: 2, src: "/image5.png", alt: "Smartphone 1" },
+    { id: 3, src: "/image6.png", alt: "Smartphone 2" },
+    { id: 4, src: "/image4.png", alt: "Smartphone 4" },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % 3);
-    }, 8000); 
+      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
     return () => clearInterval(interval);
-  }, []);
-
-  // 🛠️ FIX: Mobile aur Tablet par boxes ki duri (distance) kam ki hai
-  const getXDist = () => {
-    if (windowWidth <= 480) return 40;   /* Mobile ke liye tight gap */
-    if (windowWidth <= 968) return 65;   /* Tablet ke liye medium gap */
-    return 130;                          /* Desktop ke liye wide gap */
-  };
-
-  const xDist = getXDist();
-
-  const boxes = [
-    { id: 1, video: "/video1.mp4", }, 
-    { id: 2, video: "/video2.mp4", },
-    { id: 3, video: "/video3.mp4", },
-  ];
+  }, [images.length]);
 
   return (
     <section className="hero-container">
       <div className="hero-content">
-        
+
         {/* Left Side: Text */}
         <div className="hero-text-section">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="badge">
             ⚡ New & Used Smartphones at Best Prices
           </motion.div>
-          <h1>Arora <br /> <span>Mobile World</span></h1>
+          <h1><span className="color-silver">Arora</span> <br />
+            <span className="color-orange">Mobile</span>{' '}
+            <span className="color-navy">World</span></h1>
           <p>Your Trusted Destination for New & Used Smartphones. Quality devices, unbeatable prices, and service you can trust.</p>
           <div className="hero-btns">
-            <button className="btn-white">📱 Shop New Phones</button>
-            <button className="btn-outline">🏷️ Shop Used Phones</button>
+            {/* Modern Primary Button with Smartphone SVG */}
+            <button className="btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              Shop New Phones
+            </button>
+
+            {/* Modern Secondary Button with Price Tag SVG */}
+            <button className="btn-secondary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+              </svg>
+              Shop Used Phones
+            </button>
           </div>
         </div>
 
-        {/* Right Side: 8-Second Carousel Animation */}
+        {/* Right Side: Visual Section */}
         <div className="hero-visual-section">
-          <div className="box-wrapper">
-            {boxes.map((box, index) => {
-              let position = "left"; 
-              if (index === activeIndex) position = "center";
-              else if (index === (activeIndex + 1) % 3) position = "right";
-
-              let xValue = 0;
-              let scaleValue = 0.85; 
-              let zIndexValue = 1;
-              let opacityValue = 0.5; 
-
-              if (position === "center") {
-                xValue = 0;
-                scaleValue = 1.1; 
-                zIndexValue = 10;
-                opacityValue = 1; 
-              } else if (position === "right") {
-                xValue = xDist;
-              } else if (position === "left") {
-                xValue = -xDist;
-              }
-
-              return (
-                <motion.div
-                  key={box.id}
-                  className="video-box"
-                  animate={{
-                    x: xValue,
-                    scale: scaleValue,
-                    zIndex: zIndexValue,
-                    opacity: opacityValue,
-                  }}
-                  transition={{
-                    duration: 0.8, 
-                    ease: "easeInOut",
-                  }}
-                >
-                  <video autoPlay loop muted playsInline className="hero-video">
-                    <source src={box.video} type="video/mp4" />
-                  </video>
-                  <div className="video-overlay" style={{ background: `linear-gradient(transparent, ${box.color}44)` }}></div>
-                </motion.div>
-              );
-            })}
+          <div className="image-wrapper">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeIndex}
+                src={images[activeIndex].src}
+                alt={images[activeIndex].alt}
+                className="hero-image"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+              />
+            </AnimatePresence>
           </div>
         </div>
 

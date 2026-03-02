@@ -23,7 +23,38 @@
   gap: 50px;
   z-index: 2;
 }
+/* Purana .hero-text-section h1 span hata kar yeh 3 naye metallic classes add karein */
 
+/* iPhone Silver/White Titanium Effect */
+.color-silver {
+  background: linear-gradient(135deg, #ffffff 0%, #d1d1d6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* iPhone Orange / Desert Titanium Effect */
+.color-orange {
+  background: linear-gradient(135deg, #ff9f59 0%, #e65c00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* iPhone Navy Blue Effect (Lightened for Dark Background) */
+.color-navy {
+  background: linear-gradient(135deg, #7da1c4 0%, #2f5485 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Mobile Devices ke liye gap theek karne ke liye (Optional but recommended) */
+@media (max-width: 480px) {
+  .hero-text-section h1 {
+    line-height: 1.3; /* Taki colors aapas mein mix na hon */
+  }
+}
 /* Text Section Styling */
 .hero-text-section {
   flex: 1;
@@ -62,22 +93,77 @@
   max-width: 500px;
 }
 
-/* Buttons */
+/* --- Modern Buttons Container --- */
 .hero-btns {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-.btn-white {
-  background: white;
-  color: black;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 12px;
+/* Base style for both buttons */
+.btn-primary, .btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 50px; /* Modern Pill Shape */
+  font-family: inherit;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Super smooth animation */
+}
+
+/* Icons Animation */
+.btn-primary svg, .btn-secondary svg {
+  transition: transform 0.3s ease;
+}
+
+/* Primary Button (New Phones) - Solid & Glow */
+.btn-primary {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15); /* Premium halka glow */
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px); /* Hover par upar uthega */
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  background: #f8f8f8;
+}
+
+.btn-primary:hover svg {
+  transform: scale(1.1) rotate(-5deg); /* Icon thoda sa animate hoga */
+}
+
+/* Secondary Button (Used Phones) - Glassmorphism */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px); /* Piche ka background blur karega */
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff; /* Hover par border bright ho jayegi */
+  transform: translateY(-4px);
+}
+
+.btn-secondary:hover svg {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Mobile Adjustments for Buttons */
+@media (max-width: 480px) {
+  .btn-primary, .btn-secondary {
+    width: 100%; /* Mobile par full width lenge */
+    max-width: 320px;
+    padding: 14px 24px;
+  }
 }
 
 .btn-outline {
@@ -179,7 +265,59 @@
     height: 350px;
   }
 }
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px; /* Apne design ke hisaab se adjust karein */
+  aspect-ratio: 4/5; /* Mobile jaisi height maintain karne ke liye */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px; /* Thoda gol edges ke liye */
+}
 
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Image ko stretch hone se bachane ke liye */
+}
+/* --- Load More Button --- */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.load-more-btn {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+}
+
+.load-more-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.3);
+  background: #1e293b;
+}
+
+@media (max-width: 600px) {
+  .load-more-btn {
+    width: 100%;
+    max-width: 250px;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+}
 /* Mobile Devices */
 @media (max-width: 480px) {
   .hero-container {
